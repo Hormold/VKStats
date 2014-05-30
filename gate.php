@@ -1,8 +1,5 @@
 <?php
-
-ini_set('display_errors',1);
-error_reporting(E_ALL|E_STRICT);
-ini_set('error_log','script_errors.log');
+error_reporting(0);
 include("inc/db.php");
 include("inc/functions.php");
 
