@@ -1,0 +1,28 @@
+
+.green{
+	color: white;
+	background-color: green;
+}
+.opacity {
+  margin:60px;
+  padding:60px;
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA9JREFUeNpiYmBgaAAIMAAAjwCD5Hc2/AAAAABJRU5ErkJggg==);
+  background:rgba(0, 0, 0, 0.5);
+}
+h3{font:1em Arial, Helvetica, sans-serif;}
+body{
+	background: url(bg_tile.png);
+	color: #fff;
+
+}
+#step1_box{
+	font:1em Arial, Helvetica, sans-serif;
+}
+
+.right{
+	float: right;
+}
+a{color:black;}
+
+#step1_error{display: none;}
+#step2{display: none;}

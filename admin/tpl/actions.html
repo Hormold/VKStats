@@ -1,0 +1,17 @@
+{if="$actions"}
+<table class="table">
+<thead><th>#</th><th>Название</th><th>Тип действия</th><th>Значание / Целевое</th><th>Удалить</th></thead>
+{loop="$actions"}
+<tr>
+	<td>{$value.action_id}</td>
+	<td>{$value.name|htmlspecialchars}</td>
+	<td>{$value.type|htmlspecialchars}</td>
+	<td>{if="$value.type=='redirect'"}{$value.value|htmlspecialchars}{else}{if="$value.target_action==1"}Целевое{else}Не целевое{/if}{/if}</td>
+	<td><a href="?page=actions.delete&id={$value.action_id}" class="btn btn-danger btn-xs">Удалить</a></td>
+</tr>
+{/loop}
+</table>
+{else}
+<div class="alert alert-info">Действий еще нет, Вы можете добавить их прямо сейчас.</div>
+{/if}
+<a href="?page=actions.new&id={$pid}" class="btn btn-lg btn-success">Создать действие</a>

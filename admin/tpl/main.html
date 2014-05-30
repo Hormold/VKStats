@@ -1,0 +1,43 @@
+{if="$projects"}
+<table class="table">
+<thead><th>#</th><th>Название</th><th>Основной домен</th><th>Действия</th><th>Удалить</th></thead>
+{loop="$projects"}
+<tr>
+	<td>{$value.id}</td>
+	<td>{$value.title|htmlspecialchars}</td>
+	<td>{$value.domain|htmlspecialchars}</td>
+	<td><a href="?page=log&id={$value.id}" class="btn btn-info btn-xs">Последние действия</a></td>
+	<td><a href="?page=delete&id={$value.id}" class="btn btn-danger btn-xs">Удалить</a></td>
+</tr>
+{/loop}
+</table>
+{else}
+<div class="alert alert-info">Проектов еще нету, Вы можете добавить их прямо сейчас.</div>
+<form method="POST" action="?page=new" class="form-horizontal">
+<fieldset>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Название проекта</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="title" type="text" placeholder="ВКонтакте" class="form-control input-md">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Ссылка на сайт</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="link" type="text" placeholder="http://vk.com/" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group"> <label class="col-md-4 control-label" for="textinput">&nbsp;</label>  
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Создать проект</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+{/if}

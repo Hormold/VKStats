@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Панель Администратора</title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+</head>
+<body onLoad="">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container-fluid">
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Включить навигацию</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="#">VKStats</a>
+</div>
+<div class="navbar-collapse collapse">
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="?">Список проектов</a></li>
+    <li><a href="?page=logout">Выйти</a></li>
+  </ul>
+</div>
+</div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li {if="$page=='main'"}class="active"{/if}><a href="?page=main">Список проектов</a></li>
+        <li {if="$page=='new'"}class="active"{/if}><a href="?page=new">Создать новый проект</a></li>
+      </ul>
+      {if="isset($pid)"}
+      <ul class="nav nav-sidebar">
+      	<li {if="$page=='log'"}class="active"{/if}><a href="?page=log&id={$pid}">Последние действия</a></li>
+        <li {if="$page=='actions'"}class="active"{/if}><a href="?page=actions&id={$pid}">Действия</a></li>
+        <li {if="$page=='actions.stats'"}class="active"{/if}><a href="?page=actions.stats&id={$pid}">Суммарная статистика</a></li>
+        <li {if="$page=='actions.stats2'"}class="active"{/if}><a href="?page=actions.stats2&id={$pid}">Статистика по целевым действиям</a></li>
+        <li {if="$page=='actions.daily'"}class="active"{/if}><a href="?page=actions.daily&id={$pid}">Статистика по дням</a></li>
+      </ul>
+      {/if}
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">{if="isset($title)"}{$title}{else}Ошибка{/if}</h1>
+      {if="isset($error)"}<div class="alert alert-danger">{$error}</div>{/if}
+      {if="isset($page)"} {include="$page"} {else} Ошибка {/if}
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

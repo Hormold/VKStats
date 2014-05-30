@@ -1,0 +1,55 @@
+<script src="charts/js/highcharts.js"></script>
+<script src="charts/js/modules/exporting.js"></script>
+
+<table class="table">
+<thead>
+	<th>Имя</th>
+	{loop="$table_days"}<th>{$value}</th>{/loop}
+</thead>
+{loop="$data_table"}
+	<tr>
+		<td>{$value.name|htmlspecialchars}</td>
+		{loop="$value.data"}
+		<td>{$value}</td>
+		{/loop}
+	</tr>
+{else}
+Данных еще нету.
+{/loop}
+</table>
+( Всего / Уникальных )
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Статистика по действиям',
+            x: -20 //center
+        },
+        xAxis: {
+            categories: [{$days}]
+        },
+        yAxis: {
+            title: {
+                text: 'Количество'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' действий'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: {$data|json_encode}
+    });
+});
+</script>

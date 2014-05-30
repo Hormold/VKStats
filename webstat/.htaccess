@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "/www/stats.hormold.ru/webstat"
+AuthUserFile /var/www/hormold/data/etc/2162691.passwd
+DirectoryIndex index.html
+<Limit GET POST>
+	require valid-user
+</Limit>

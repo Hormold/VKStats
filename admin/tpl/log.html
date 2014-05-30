@@ -1,0 +1,15 @@
+{if="$log"}
+<table class="table">
+<thead><th>Название</th><th>Тип действия</th><th>Время</th><th>User ID</th></thead>
+{loop="$log"}
+<tr>
+  <td>{$value.name|htmlspecialchars}</td>
+  <td>{$value.type|htmlspecialchars}</td>
+  <td>{$value.its|time_format}</td>
+  <td>{$value.user}</td>
+</tr>
+{/loop}
+</table>
+{else}
+Действия еще не записывались!
+{/if}
