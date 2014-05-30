@@ -1,4 +1,8 @@
 <?php
+
+ini_set('display_errors',1);
+error_reporting(E_ALL|E_STRICT);
+ini_set('error_log','script_errors.log');
 include("inc/db.php");
 include("inc/functions.php");
 
@@ -14,7 +18,7 @@ if(isset($g["act"]) AND isset($g["cookie"]) AND preg_match("/^[0-9a-zA-Z]{9}$/i"
 
 			case 'getProjects':
 				$db=db::getInstance();
-				$host=$db->select("projects","domain='{$host}'");
+				$host=$db->select("projects","domain='{$host}' AND activate=1");
 				if($host){
 					foreach($host as &$v){
 						unset($v["uid"],$v["activate"]);
@@ -27,7 +31,7 @@ if(isset($g["act"]) AND isset($g["cookie"]) AND preg_match("/^[0-9a-zA-Z]{9}$/i"
 
 			case 'isAllowed':
 				$db=db::getInstance();
-				$host=$db->select("projects","id='".$db->secure($g["project_id"])."'",1);
+				$host=$db->select("projects","id='".$db->secure($g["project_id"])."' AND activate=1",1);
 				if($host){
 					$output=isAllowed();
 				}else{
@@ -37,7 +41,7 @@ if(isset($g["act"]) AND isset($g["cookie"]) AND preg_match("/^[0-9a-zA-Z]{9}$/i"
 
 			case 'getActions':
 				$db=db::getInstance();
-				$host=$db->select("projects","id='".$g["project_id"]."' AND domain='{$host}'",1);
+				$host=$db->select("projects","id='".$g["project_id"]."' AND domain='{$host}' AND activate=1",1);
 				if($host AND isAllowed()){
 					$actions=$db->select("actions","pid=".intval($host["id"])." AND active=1");
 					if($actions){
@@ -73,7 +77,7 @@ if(isset($g["act"]) AND isset($g["cookie"]) AND preg_match("/^[0-9a-zA-Z]{9}$/i"
 
 			case 'isCompleted':
 				$db=db::getInstance();
-				$host=$db->select("projects","domain='{$host}'",1);
+				$host=$db->select("projects","domain='{$host}' AND activate=1",1);
 				if($host){
 					$action=$db->select("actions","name='".$db->secure($g["name"])."' AND active=1",1);
 					if($action){
