@@ -3,13 +3,15 @@
 <head>
 	<script src="lib.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="etc/main.css">
+	<meta charset="UTF-8">
+	<title>Демо сайт</title>
 	<script>
 	VKStats.init({
 		"project_id":1
 	});
 	</script>
 </head>
-<body bgcolor="#FFFFFF" onLoad="loaded();">
+<body onLoad="loaded();">
 <div class="opacity">
 	<div class="right"><a href="javascript://return void();" onClick="VKStats.make_session(); location.href='/';">Сбросить сессию</a><br />
 	Зеленка кнопка/текст - действие уже было сделано.<br />
