@@ -1,0 +1,13 @@
+{if="$data"}
+<table class="table">
+<thead><th>Пользователь</th><th>Время действия</th></thead>
+{loop="$data"}
+<tr>
+	<td>{$value.user}</td>
+	<td>{$value.its|time_format}</td>
+</tr>
+{/loop}
+</table>
+{else}
+<div class="alert alert-info">Уникальных пользователей еще нет, подождите немного.</div>
+{/if}

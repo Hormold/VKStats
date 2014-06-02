@@ -3,9 +3,10 @@
 <thead><th>Название</th><th>Количество</th><th>Пользователи</th></thead>
 {loop="$actions"}
 <tr>
-	<td>{$value.name}</td>
+	<td>{$value.name} (#{$value.action_id})</td>
 	<td>{$value.total}</td>
-	<td><a href="?page=actions.stats.list" class="btn btn-info btn-xs">Посмотреть пользователей</a></td>
+	
+	<td><a href="?page=actions.stats.list.single&id={$pid}&aid={$value.action_id}" class="btn btn-info btn-xs">Посмотреть пользователей</a></td>
 </tr>
 {/loop}
 </table>

@@ -3,11 +3,13 @@
 <thead><th>#</th><th>Название</th><th>Основной домен</th><th>Действия</th><th>Удалить</th></thead>
 {loop="$projects"}
 <tr>
-	<td>{$value.id}</td>
-	<td>{$value.title|htmlspecialchars}</td>
-	<td>{$value.domain|htmlspecialchars}</td>
-	<td><a href="?page=log&id={$value.id}" class="btn btn-info btn-xs">Последние действия</a></td>
-	<td><a href="?page=delete&id={$value.id}" class="btn btn-danger btn-xs">Удалить</a></td>
+  <td>{$value.id}</td>
+  <td>{$value.title|htmlspecialchars}</td>
+  <td>{$value.domain|htmlspecialchars}</td>
+  <td><a href="?page=log&id={$value.id}" class="btn btn-info btn-xs">Последние действия</a>
+  <a href="?page=actions.stats.list&id={$value.id}" class="btn btn-info btn-xs">Уникальные пользователи</a>
+  </td>
+  <td><a href="?page=delete&id={$value.id}" class="btn btn-danger btn-xs">Удалить</a></td>
 </tr>
 {/loop}
 </table>
@@ -30,7 +32,6 @@
   </div>
 </div>
 
-<!-- Button -->
 <div class="form-group"> <label class="col-md-4 control-label" for="textinput">&nbsp;</label>  
   <div class="col-md-4">
     <button id="singlebutton" name="singlebutton" class="btn btn-primary">Создать проект</button>

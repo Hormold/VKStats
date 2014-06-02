@@ -1,12 +1,13 @@
 {if="$actions"}
 <table class="table">
-<thead><th>#</th><th>Название</th><th>Тип действия</th><th>Значание / Целевое</th><th>Удалить</th></thead>
+<thead><th>#</th><th>Название</th><th>Тип действия</th><th>Значание</th>Целевое</th><th>Удалить</th></thead>
 {loop="$actions"}
 <tr>
 	<td>{$value.action_id}</td>
 	<td>{$value.name|htmlspecialchars}</td>
 	<td>{$value.type|htmlspecialchars}</td>
-	<td>{if="$value.type=='redirect'"}{$value.value|htmlspecialchars}{else}{if="$value.target_action==1"}Целевое{else}Не целевое{/if}{/if}</td>
+	<td>{if="$value.type=='redirect'"}{$value.value|htmlspecialchars}{else}Дейтвие не имеет "значения"{/if}</td>
+	<td>{if="$value.target_action==1"}Целевое{else}Не целевое{/if}</td>
 	<td><a href="?page=actions.delete&id={$value.action_id}" class="btn btn-danger btn-xs">Удалить</a></td>
 </tr>
 {/loop}
